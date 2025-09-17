@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import { useStudentStore } from "../store/useStudentStore";
+import Image from "next/image";
+
+
 
 export default function StudentTable() {
   const { students } = useStudentStore();
@@ -49,7 +52,15 @@ export default function StudentTable() {
             return (
               <div>
                 <h3 className="text-lg font-bold">รายละเอียดของ {s.firstName} {s.lastName}</h3>
-                {s.image && <img src={s.image} alt="profile" className="w-32 h-32 object-cover rounded" />}
+                {s.image && (
+                    <Image
+                        src={s.image}
+                        alt="profile"
+                        width={128}
+                        height={128}
+                        className="rounded object-cover"
+                    />
+                    )}
                 <p><b>ที่อยู่:</b> {s.address}</p>
                 <p><b>เบอร์โทร:</b> {s.phone}</p>
                 <p><b>โรงเรียน:</b> {s.school}</p>

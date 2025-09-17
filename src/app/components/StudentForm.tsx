@@ -3,6 +3,8 @@
 import { useForm } from "react-hook-form";
 import { useStudentStore } from "../store/useStudentStore";
 
+type FormData = Omit<Student, "id" | "image"> & { image?: FileList };
+
 export default function StudentForm() {
   const addStudent = useStudentStore((s) => s.addStudent);
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
